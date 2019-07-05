@@ -1,0 +1,9 @@
+ext {
+    def build_versions = [:]
+    def plugin_versions = [:]
+    def versions = [:]
+
+
+    ext.build_versions = build_versions
+    ext.versions = versions
+}

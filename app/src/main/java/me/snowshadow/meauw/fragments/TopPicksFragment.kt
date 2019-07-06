@@ -1,4 +1,4 @@
-package me.snowshadow.meauw.frags
+package me.snowshadow.meauw.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

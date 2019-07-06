@@ -2,7 +2,7 @@ package me.snowshadow.meauw.activities
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import me.snowshadow.meauw.frags.*
+import me.snowshadow.meauw.fragments.*
 
 @Module
 interface MainActivityModule {

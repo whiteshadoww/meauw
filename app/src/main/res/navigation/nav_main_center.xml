@@ -5,13 +5,14 @@
             android:id="@+id/nav_main_center_fragment"
             app:startDestination="@id/swipeFragment">
 
-    <fragment android:id="@+id/swipeFragment" android:name="me.snowshadow.meauw.frags.SwipeFragment"
+    <fragment android:id="@+id/swipeFragment"
+              android:name="me.snowshadow.meauw.fragments.SwipeFragment"
               android:label="fragment_swipe" tools:layout="@layout/fragment_swipe">
         <action android:id="@+id/action_swipeFragment_to_topPicksFragment"
                 app:destination="@id/topPicksFragment"/>
     </fragment>
     <fragment android:id="@+id/topPicksFragment"
-              android:name="me.snowshadow.meauw.frags.TopPicksFragment"
+              android:name="me.snowshadow.meauw.fragments.TopPicksFragment"
               android:label="TopPicksFragment"/>
 
 </navigation>

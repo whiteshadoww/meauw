@@ -3,7 +3,7 @@ package me.snowshadow.meauw.view.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import me.snowshadow.meauw.frags.CatListFragment
+import me.snowshadow.meauw.fragments.CatListFragment
 
 class UpdatesViewPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 

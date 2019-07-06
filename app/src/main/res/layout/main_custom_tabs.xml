@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/github_face"
+        />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.polyak.iconswitch.IconSwitch
+            android:id="@+id/icon_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:isw_active_tint_icon_left="@color/fire"
+            app:isw_active_tint_icon_right="@color/gold"
+            app:isw_background_color="#bdbdbd"
+            app:isw_icon_left="@drawable/ic_whatshot_black_24dp"
+            app:isw_icon_right="@drawable/ic_star_black_24dp"
+            app:isw_icon_size="24dp"
+            app:isw_inactive_tint_icon_left="#fafafa"
+            app:isw_inactive_tint_icon_right="#fafafa"
+            app:isw_thumb_color_left="#fff"
+            app:isw_thumb_color_right="#fff"/>
+
+        <View android:id="@+id/center_tab_view"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/cat"/>
+
+    </LinearLayout>
+</LinearLayout>

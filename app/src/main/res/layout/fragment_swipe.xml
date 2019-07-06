@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".frags.SwipeFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false">
+
+        <RelativeLayout
+            android:id="@+id/button_container"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:clipChildren="false"
+            android:orientation="horizontal">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/reject_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/frame"
+                android:layout_toLeftOf="@id/frame"
+                app:backgroundTint="@android:color/white"
+                app:fabSize="auto"
+                app:rippleColor="#22ED7563"
+                app:srcCompat="@drawable/close_cross"/>
+
+            <FrameLayout
+                android:id="@+id/frame"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp">
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/like_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="40dp"
+                    app:cardElevation="10dp"
+                    app:rippleColor="#225BC9FA">
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        app:srcCompat="@drawable/paw"/>
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </FrameLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/redo_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/frame"
+                android:layout_toRightOf="@id/frame"
+                app:backgroundTint="@android:color/white"
+                app:fabSize="auto"
+                app:rippleColor="#226FE2B3"
+                app:srcCompat="@drawable/undo"/>
+
+        </RelativeLayout>
+
+        <com.yuyakaido.android.cardstackview.CardStackView
+            android:id="@+id/card_stack_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/button_container"
+            android:clipToPadding="false"
+            android:padding="4dp">
+        </com.yuyakaido.android.cardstackview.CardStackView>
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

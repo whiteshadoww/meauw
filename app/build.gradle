@@ -11,7 +11,10 @@ android {
         targetSdkVersion conf_build.target_sdk
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "X_API_KEY", "\"$XApiKey\""
     }
     buildTypes {
         release {
@@ -25,26 +28,40 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //androidx//
     implementation deps.androidx.appcompat
-    implementation deps.androidx.core_ktx
     implementation deps.androidx.constraintlayout
+    implementation deps.androidx.legacy_support_v4
     //kotlin
     implementation deps.kotlin.stdlib
     implementation deps.kotlin.allopen
     //retrofit
     implementation deps.retrofit.retrofit
     implementation deps.retrofit.gson
+    implementation deps.retrofit.rxjava2_adapter
     //dagger
-    kapt deps.dagger.compiler
     implementation deps.dagger.dagger
+    implementation deps.dagger.android
+    implementation deps.dagger.android_support
+    kapt deps.dagger.compiler
+    kapt deps.dagger.support_compiler
+    //rxjava
+    implementation deps.rxkotlin.rxkotlin
+    implementation deps.rxkotlin.rxandroid
     //room
     implementation deps.room.room
-    kapt deps.room.compiler
     implementation deps.room.room_ktx
     implementation deps.room.room_rxjava2
+    kapt deps.room.compiler
     //lifecycle
     implementation deps.lifecycle.viewmodel
-    implementation deps.lifecycle.common
+//    implementation deps.lifecycle.lifecycle
+//    implementation deps.lifecycle.common
+    kapt deps.lifecycle.compiler
     //navigation
     implementation deps.navigation.fragment
     implementation deps.navigation.ui
+    //others
+    implementation deps.others.card_stack
+    implementation deps.others.icon_switch
+    implementation deps.others.picasso
+    implementation deps.others.circularimageview
 }

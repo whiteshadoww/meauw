@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Meauw</string>
     <string name="top_picks">Featured cats of the day,\npicked just for you</string>
+    <string name="net_issue">Could not find any cat\ncheck your network connection</string>
 </resources>

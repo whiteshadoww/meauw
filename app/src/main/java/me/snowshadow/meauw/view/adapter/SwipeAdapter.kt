@@ -51,6 +51,7 @@ class SwipeAdapter constructor(var type: ViewType = ViewType.HOT_PICK) :
     }
 
     fun getCat(topPosition: Int) = cats[topPosition]
+    fun getCats() = cats
 
     inner class SwipeHolder(private val v: View) : RecyclerView.ViewHolder(v) {
         fun bind() {

@@ -45,9 +45,37 @@ class SwipeFragment : BaseFragment(), CardStackListener {
         super.onStart()
 
         mainViewModel.cats.observeOn(AndroidSchedulers.mainThread())
-            .subscribe { adapter.setCats(it) }
+            .subscribe {
+                adapter.setCats(it)
+            }
+
+        mainViewModel.isLoadingCats.observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                checkAdapter(it)
+            }
 
         mainViewModel.loadMore()
+    }
+
+
+    private fun checkAdapter(it: Boolean = false) {
+        if (adapter.getCats().size == 0) {
+
+            show_cat.visibility = View.GONE
+
+            if (it) {
+                no_cat.visibility = View.GONE
+                loading_cat.visibility = View.VISIBLE
+            } else {
+                no_cat.visibility = View.VISIBLE
+                loading_cat.visibility = View.GONE
+            }
+
+        } else {
+            no_cat.visibility = View.GONE
+            loading_cat.visibility = View.GONE
+            show_cat.visibility = View.VISIBLE
+        }
     }
 
 
@@ -105,11 +133,14 @@ class SwipeFragment : BaseFragment(), CardStackListener {
             manager.setSwipeAnimationSetting(setting)
             card_stack_view.swipe()
         }
-
+        swipe_retry.setOnClickListener { mainViewModel.loadMore() }
 
     }
 
     override fun onCardDragging(direction: Direction, ratio: Float) {
+
+        if (manager.topView == null) return
+
         when (direction) {
             Direction.Left -> manager.topView.nope.alpha = ratio * 1.3f
             Direction.Right -> manager.topView.like.alpha = ratio * 1.3f

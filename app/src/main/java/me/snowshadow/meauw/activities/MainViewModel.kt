@@ -17,24 +17,27 @@ class MainViewModel @Inject constructor(private var catApi: CatApi, private var 
 
     private var page = 0
     val cats = PublishSubject.create<ArrayList<Cat>>()
+    val isLoadingCats = PublishSubject.create<Boolean>()
     val showSwipe = PublishSubject.create<Boolean>()
-
 
     init {
         showSwipe.onNext(true)
+        isLoadingCats.onNext(false)
     }
-
 
     @SuppressLint("CheckResult")
     fun loadMore() {
 
+        isLoadingCats.onNext(true)
 
         catApi.getPagedCats(page)
             .subscribe({ data ->
                 cats.onNext(data as ArrayList<Cat>)
                 page++
-            }, { err ->
-                err.printStackTrace()
+                isLoadingCats.onNext(false)
+            }, {
+                cats.onNext(ArrayList())
+                isLoadingCats.onNext(false)
             })
 
     }

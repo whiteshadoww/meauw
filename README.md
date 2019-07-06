@@ -14,7 +14,7 @@
 	  `git clone https://github.com/whiteshadoww/meauw.git`
  2. At the *projectDir* create a *`config.gradle`* file and write the following
     ```
-	  ext {`
+	  ext {
 	      XApiKey = "xxx-xx-xx"
 	   }
      ```

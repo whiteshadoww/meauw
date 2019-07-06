@@ -10,6 +10,7 @@ import android.view.animation.LinearInterpolator
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.yuyakaido.android.cardstackview.*
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.card_swipe_cat.view.*
 import kotlinx.android.synthetic.main.fragment_swipe.*
 import me.snowshadow.meauw.R
@@ -20,7 +21,7 @@ import me.snowshadow.meauw.view.adapter.SwipeAdapter
 
 class SwipeFragment : BaseFragment(), CardStackListener {
 
-
+    private val compositeDisposal = CompositeDisposable()
     private val manager by lazy { CardStackLayoutManager(this.context, this) }
     private val adapter by lazy { SwipeAdapter() }
 
@@ -40,21 +41,26 @@ class SwipeFragment : BaseFragment(), CardStackListener {
 
     }
 
-    @SuppressLint("CheckResult")
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
 
-        mainViewModel.cats.observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                adapter.setCats(it)
-            }
-
-        mainViewModel.isLoadingCats.observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                checkAdapter(it)
-            }
+        compositeDisposal.addAll(
+            mainViewModel.cats.observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    adapter.setCats(it)
+                },
+            mainViewModel.isLoadingCats.observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    checkAdapter(it)
+                })
 
         mainViewModel.loadMore()
+    }
+
+    override fun onPause() {
+        compositeDisposal.dispose()
+        super.onPause()
+
     }
 
 
@@ -178,7 +184,6 @@ class SwipeFragment : BaseFragment(), CardStackListener {
     override fun onCardRewound() {
         manager.topView.nope.alpha = 0f
         manager.topView.like.alpha = 0f
-        mainViewModel.removeCat(adapter.getCat(manager.topPosition))
     }
 
     override fun onCardCanceled() {
